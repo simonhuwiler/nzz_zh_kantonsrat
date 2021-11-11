@@ -1,7 +1,23 @@
+from dateutil import parser
+
+def kantonsrat_to_datetime(kantonsrat):
+    for k in kantonsrat:
+        for x in k['einsitz']:
+            x['start'] = parser.parse(x['start'])
+            x['end'] = parser.parse(x['end'])
+        for x in k['partei']:
+            x['start'] = parser.parse(x['start'])
+            x['end'] = parser.parse(x['end'])
+        for x in k['funktion']:
+            x['start'] = parser.parse(x['start'])
+            x['end'] = parser.parse(x['end'])    
+
 aliases = [
     ['Theresia Weber', 'Theresia', 'Weber-Gachnang'],
     ['Silvia Seiz', 'Silvia', 'Seiz-Gut'],
-    ['Benno Scherrer Moser', 'Benno', 'Scherrer'],
+    ['Beno Scherrer Moser', 'Benno', 'Scherrer Moser'],
+    ['Benno Scherer', 'Benno', 'Scherrer Moser'],
+    ['Benno Scherrer', 'Benno', 'Scherrer Moser'],    
     ['Regula Kaeser', 'Regula', 'Kaeser-Stöckli'],
     ['Markus Späth', 'Markus', 'Späth-Walter'],
     ['Benjamin Schwarzenbach', 'Beni', 'Schwarzenbach'],
@@ -9,12 +25,13 @@ aliases = [
     ['Karin Maeder', 'Karin', 'Maeder-Zuberbühler'],
     ['Sabine Wettstein', 'Sabine', 'Wettstein-Studer'],
     ['Corinne Thomet', 'Corinne', 'Thomet-Bürki'],
-    ['Martin Farner', 'Martin', 'Farner-Brandenberger'],
+    ['Martin Farner-Brandenberger', 'Martin', 'Farner'],
     ['Katharina Kull', 'Katharina', 'Kull-Benz'],
     ['Max Homberger', 'Max Robert' ,'Homberger'],
     ['Renate Büchi', 'Renate', 'Büchi-Wild'],
     ['Jakob Scheebeli', 'Jakob', 'Schneebeli'],
     ['Judith Stofer', 'Judith Anna', 'Stofer'],
+    ['Anna Stofer', 'Judith Anna', 'Stofer'],
     ['Karin Egli', 'Karin', 'Egli-Zimmermann'],
     ['Heidi Bucher', 'Heidi', 'Bucher-Steinegger'],
     ['Catherine Heuberger', 'Catherine', 'Heuberger Golta'],
@@ -26,6 +43,8 @@ aliases = [
     ['Philippe Kutter', 'Philipp', 'Kutter'],
     ['Sabine Sieber', 'Sabine', 'Sieber Hirschi'],
     ['Beatrix Frei', 'Beatrix' ,'Frey-Eigenmann'],
+    ['Beatrix Frey', 'Beatrix' ,'Frey-Eigenmann'],
+    ['Beatrice Frey', 'Beatrix' ,'Frey-Eigenmann'],
     ['Raphael Steiner', 'Rafael', 'Steiner'],
     ['Hansueli Vogt', 'Hans-Ueli', 'Vogt'],
     ['Sylvie Fee Matter', 'Sylvie', 'Matter'],
@@ -34,7 +53,7 @@ aliases = [
     ['Sonja Rueff', 'Sonja', 'Rueff-Frenkel'],
     ['Silvie Matter', 'Sylvie', 'Matter'],
     ['Bettina Balmer', 'Bettina', 'Balmer-Schiltknecht'],
-    ['Claudia Wyssen', 'Claudia', 'Frei-Wyssen'],
+    ['Claudia Frei-Wyssen', 'Claudia', 'Wyssen'],
     ['Barbara Franzen', 'Ann Barbara', 'Franzen'],
     ['Birgit Tognella', 'Birgit', 'Tognella-Geertsen'],
     ['Michèle Dünki', 'Michèle', 'Dünki-Bättig'],
@@ -57,12 +76,13 @@ aliases = [
     ['Beat Mohnhart', 'Beat', 'Monhart'],
     ['Marc Anthony Wisskirchen', 'Mark Anthony', 'Wisskirchen'],
     ['Ariane Moser', 'Arianne', 'Moser-Schäfer'],
+    ['Arianne Moser', 'Arianne', 'Moser-Schäfer'],
     ['Beatrix Frey-Eigenmann', 'Beatrix', 'Frey'],
-    ['Benno Scherer', 'Benno', 'Scherrer Moser'],
     ['Harry Brandenberger', 'Harry Robert', 'Brandenberger'],
     ['Gantner Alex', 'Alex', 'Gantner'],
-    ['Cristina Wyss-Cortellini', 'Cristina', 'Cortellini'],
+    ['Cristina Cortellini', 'Cristina', 'Wyss-Cortellini'],
     ['Gehrig Sonja', 'Sonja', 'Gehrig Schmidt'],
+    ['Sonja Gehrig', 'Sonja', 'Gehrig Schmidt'],
     ['Andreas Halser', 'Andreas', 'Hasler'],
     ['Jasmine Pokerschnig', 'Jasmin', 'Pokerschnig'],
     ['Anthony Wisskirchen', 'Mark Anthony', 'Wisskirchen'],
@@ -71,9 +91,9 @@ aliases = [
     ['Jürg Kündig', 'Jörg', 'Kündig'],
     ['Edith Häuser', 'Edith', 'Häusler-Michel'],
     ['Edith Häusler', 'Edith', 'Häusler-Michel'],
+    ['Edit Häusler', 'Edith', 'Häusler-Michel'],
     ['Franziska Barmetter', 'Franziska', 'Barmettler'],
     ['Stepan Weber', 'Stephan', 'Weber'],
-    ['Arianne Moser-Schäfer', 'Arianne', 'Moser'],
     ['Natalie Aeschbacher', 'Nathalie', 'Aeschbacher'],
     ['Fehr Düsel', 'Nina', 'Fehr Düsel'],
     ['Monica Muri Sanesi', 'Monica', 'Sanesi Muri'],
@@ -86,5 +106,28 @@ aliases = [
     ['Jeanette Büsser', 'Jeannette', 'Büsser'],
     ['Anne-Claude Hensch-Frei', 'Anne-Claude', 'Hensch Frei'],
     ['Hanspeter Amrein', 'Hans-Peter', 'Amrein'],
+    ['Hans Peter Amrein', 'Hans-Peter', 'Amrein'],
     ['Jean-Philippe Pinot', 'Jean-Philippe', 'Pinto'],
+    ['Jean Philippe Pinot', 'Jean-Philippe', 'Pinto'],
+    ['Jean Philipp Pinto', 'Jean-Philippe', 'Pinto'],
+    ['Cyrill von Planta', 'Cyrill', 'Planta von'],
+    ['Ursula Gut', 'Ursula', 'Gut-Winterberger'],
+    ['Regine Aeppli', 'Regine','Aeppli Wartmann'],
+    ['Maria Rohweder', 'Maria', 'Rohweder-Lischer'],
+    ['Maria Lischer', 'Maria', 'Rohweder-Lischer'],
+    ['Judith Bellaiche', 'Judith', 'Bellaïche'],
+    ['Yvonne Bürgin', 'Yvonne', 'Bürgin-Hartmann'],
+    ['Yvonne Bürgi', 'Yvonne', 'Bürgin-Hartmann'],
+    ['Rafael Golta', 'Raphael', 'Golta'],
+    ['Gabi Petri', 'Gabriele', 'Petri'],
+    ['Margrit Haller', 'Margrit', 'Haller-Traber'],
+    ['Elisabeth Pflughshaupt', 'Elisabeth', 'Pflugshaupt'],
+    ['Susanne Trost', 'Susanne', 'Trost Vetter'],
+    ['Marionna Schlatter', 'Marionna', 'Schlatter-Schmid'],
+    ['Christa Stünzi', 'Christa Isabelle', 'Stünzi'],
+    ['Paul von Euw', 'Paul', 'Euw von'],
+    ['Barbara Günthard', 'Barbara', 'Günthard Fitze'],
+    ['Melissa Näf', 'Melissa', 'Näf-Doffey'],
+    ['Nora Bussmann Bolaños', 'Nora', 'Bussmann Bulaños'],
+    ['Romaine Rogenmoser', 'Romaine', 'Roggenmoser'],
 ]
