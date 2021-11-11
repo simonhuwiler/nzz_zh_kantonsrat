@@ -1,4 +1,6 @@
 from dateutil import parser
+import pandas as pd
+import numpy as np
 
 def kantonsrat_to_datetime(kantonsrat):
     for k in kantonsrat:
@@ -10,7 +12,40 @@ def kantonsrat_to_datetime(kantonsrat):
             x['end'] = parser.parse(x['end'])
         for x in k['funktion']:
             x['start'] = parser.parse(x['start'])
-            x['end'] = parser.parse(x['end'])    
+            x['end'] = parser.parse(x['end'])
+            
+def filter_kantonsrat_by_date(kantonsrat, dt):
+    return list(filter(lambda x: len(list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), x['einsitz']))) > 0, kantonsrat))
+
+def kantonsrat_as_dataframe(kantonsrat, dt):
+    members = filter_kantonsrat_by_date(kantonsrat, dt)
+    records = []
+    for r in members:
+
+        # Get Party
+        f = list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), r['partei']))
+        party = ''
+        if len(f) > 0:
+            party = f[0]['bezeichnung']
+
+        # Get Funktion
+        f = list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), r['funktion']))
+        funktion = np.nan
+        if len(f) > 0:
+            funktion = f[0]['bezeichnung']  
+
+        funktion = np.nan if funktion == 'Mitglied' else funktion  
+
+        records.append({
+            'name': r['name'],
+            'vorname': r['vorname'],
+            'jahrgang': r['jahrgang'],
+            'geschlecht': r['geschlecht'],
+            'party': party,
+            'funktion': funktion
+        })
+
+    return pd.DataFrame(records)    
 
 aliases = [
     ['Theresia Weber', 'Theresia', 'Weber-Gachnang'],
