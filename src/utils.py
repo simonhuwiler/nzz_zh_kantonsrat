@@ -48,6 +48,7 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
     return pd.DataFrame(records)    
 
 aliases = [
+    ['Yves De Mestral', 'Yves', 'de Mestral'],
     ['Theresia Weber-Gachnang', 'Theresia', 'Weber'],
     ['Silvia Seiz', 'Silvia', 'Seiz-Gut'],
     ['Beno Scherrer Moser', 'Benno', 'Scherrer Moser'],
@@ -69,6 +70,7 @@ aliases = [
     ['Anna Stofer', 'Judith Anna', 'Stofer'],
     ['Karin Egli', 'Karin', 'Egli-Zimmermann'],
     ['Heidi Bucher', 'Heidi', 'Bucher-Steinegger'],
+    ['Heidi Steinegger', 'Heidi', 'Bucher-Steinegger'],
     ['Catherine Heuberger', 'Catherine', 'Heuberger Golta'],
     ['Ursula Moor', 'Ursula', 'Moor-Schwarz'],
     ['Jean-Philipp Pinto', 'Jean-Philippe', 'Pinto'],
@@ -105,6 +107,7 @@ aliases = [
     ['Katrin Cometta', 'Katrin', 'Cometta-Müller'],
     ['Nicola Sigrist', 'Nicola', 'Siegrist'],
     ['Qëndresa Sadriu', 'Qëndresa (Qëni)', 'Sadriu'],
+    ['Qëndresa Hoxha-Sadriu', 'Qëndresa (Qëni)', 'Sadriu'],
     ['Martin Neukomm', 'Martin', 'Neukom'],
     ['Theres Agosti', 'Theres', 'Agosti Monn'],
     ['These Agosti', 'Theres', 'Agosti Monn'],
