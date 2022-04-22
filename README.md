@@ -3,7 +3,7 @@ Diese Scripte machen folgendes:
 
 ### Voten
 * Herunterladen von allen Sitzungsprotokollen
-* Gesprochenes Wort je Kantonsratsmitglied erkennen und extrahieren
+* Gesprochenes Wort ("Voten") je Kantonsratsmitglied erkennen und extrahieren
 * Mitgliederliste anhand Daten des Staatsarchives aufbereiten
 * Auswerten, wer wie oft und was gesagt hat
 
@@ -26,6 +26,10 @@ Diese Scripte machen folgendes:
 * `5_text_analysis.ipynb`: Textanalysen der **Voten**
 * `6_topic_modelling.ipynb`: Toppic Modelling der **Voten**
 * `7_geschaefte_analyse.ipynb`: Analyse der eingereichten Vorstösse
+
+# Aufbereitete Daten:
+* `export/votum/votum_*.csv`: Aufbereitete, gesprochene Voten mit Metadaten zur sprechenden Person
+* `export/geschaefte.csv`: Aufbereitete Daten zu eingereichten Geschäften und Urheber/in
 
 ## Kontakt:
 simon.huwiler@nzz.ch
