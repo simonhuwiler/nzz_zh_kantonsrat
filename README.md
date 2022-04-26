@@ -30,6 +30,8 @@ Diese Scripte machen folgendes:
 # Aufbereitete Daten:
 * `export/votum/votum_*.csv`: Aufbereitete, gesprochene Voten mit Metadaten zur sprechenden Person
 * `export/geschaefte.csv`: Aufbereitete Daten zu eingereichten Geschäften und Urheber/in
+* `export/tags/tag_*.csv`: Getagte Voten
+* `export/nouns/nouns_*.csv`: Nur Nomen
 
 ## Kontakt:
 simon.huwiler@nzz.ch
