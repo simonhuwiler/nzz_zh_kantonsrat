@@ -259,3 +259,6 @@ aliases = [
     ['Blanca Ramer', 'Blanca', 'Ramer-Stäubli'],
     ['Elisabeth Scheffeldt', 'Elisabeth', 'Scheffeldt Kern'],
 ]
+
+stopwords = ['Kanton', 'Jahr', 'Zürich', 'Postulat', 'Gemeinde', 'Antrag', 'Prozent', 'Gesetz', 'Vorlage', 'Kommission', 'Kantonsrat', 'Staat', 'Beispiel', 'Frage', 'Massnahmen', 'Schweiz', 'Dank']
+stopwords_lower = [s.lower() for s in stopwords]
