@@ -52,6 +52,7 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
     return pd.DataFrame(records)
 
 aliases = [
+    ['Stefanie Huber', 'Stefanie Elisabeth', 'Huber'],
     ['Yves De Mestral', 'Yves', 'de Mestral'],
     ['Theresia Weber-Gachnang', 'Theresia', 'Weber'],
     ['Theres Weber-Gachnang', 'Theresia', 'Weber'],
