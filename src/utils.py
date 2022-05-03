@@ -28,13 +28,17 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
         if len(f) > 0:
             party = f[0]['bezeichnung']
 
+        # Replace "CVP" with "Die Mitte"
+        if party.lower() == 'cvp':
+            party = 'Die Mitte'
+
         # Get Funktion
         f = list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), r['funktion']))
         funktion = np.nan
         if len(f) > 0:
             funktion = f[0]['bezeichnung']  
 
-        funktion = np.nan if funktion == 'Mitglied' else funktion  
+        funktion = np.nan if funktion == 'Mitglied' else funktion
 
         records.append({
             'name': r['name'],
@@ -45,7 +49,7 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
             'funktion': funktion
         })
 
-    return pd.DataFrame(records)    
+    return pd.DataFrame(records)
 
 aliases = [
     ['Yves De Mestral', 'Yves', 'de Mestral'],
