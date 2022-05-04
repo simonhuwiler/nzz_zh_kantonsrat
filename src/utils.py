@@ -276,5 +276,6 @@ aliases = [
     ['Pia Hollenstein Weidmann', 'Pia', 'Holenstein Weidmann']
 ]
 
-stopwords = ['Kanton', 'Jahr', 'Zürich', 'Postulat', 'Gemeinde', 'Antrag', 'Prozent', 'Gesetz', 'Vorlage', 'Kommission', 'Kantonsrat', 'Staat', 'Beispiel', 'Frage', 'Massnahmen', 'Schweiz', 'Dank']
+stopwords = ['Kanton', 'Jahr', 'Zürich', 'Postulat', 'Gemeinde', 'Antrag', 'Prozent', 'Gesetz', 'Vorlage', 'Kommission', 'Kantonsrat', 'Staat', 'Beispiel', 'Frage', 'Massnahmen', 'Schweiz', 'Dank',
+             'Vorstoss', 'Parlament', 'Geschäft', 'Politik', 'Kollege', 'Debatte', 'Gegenvorschlag']
 stopwords_lower = [s.lower() for s in stopwords]
