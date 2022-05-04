@@ -61,6 +61,8 @@ aliases = [
     ['Benno Scherer', 'Benno', 'Scherrer Moser'],
     ['Benno Scherrer', 'Benno', 'Scherrer Moser'],
     ['Beno Scherrer', 'Benno', 'Scherrer Moser'],
+    ['Bruno Scherrer', 'Benno', 'Scherrer Moser'],
+    ['Benno Scherr', 'Benno', 'Scherrer Moser'],
     ['Regula Kaeser', 'Regula', 'Kaeser-Stöckli'],
     ['Markus Späth', 'Markus', 'Späth-Walter'],
     ['Benjamin Schwarzenbach', 'Beni', 'Schwarzenbach'],
@@ -181,6 +183,7 @@ aliases = [
     ['Barbara Günthard', 'Barbara', 'Günthard Fitze'],
     ['Melissa Näf', 'Melissa', 'Näf-Doffey'],
     ['Nora Bussmann Bolaños', 'Nora', 'Bussmann Bulaños'],
+    ['Nora Bussmann', 'Nora', 'Bussmann Bulaños'],
     ['Romaine Rogenmoser', 'Romaine', 'Roggenmoser'],
     ['Katrin Susanne Meier', 'Katrin', 'Meier'],
     ['Elisabeth Derisiotis', 'Elisabeth', 'Derisiotis-Scherrer'],
@@ -249,6 +252,7 @@ aliases = [
     ['Irene Minder', 'Irene', 'Minder-Roost'],
     ['Hans-Läubli', 'Hans', 'Läubli'],
     ['Sibylle Marty', 'Sibylle', 'Marti'],
+    ['Sybille Marti', 'Sibylle', 'Marti'],
     ['Florian Herr', 'Florian', 'Heer'],
     ['Michale Welz', 'Michael', 'Welz'],
     ['Raffael Fehr', 'Raffaela', 'Fehr'],
@@ -263,6 +267,13 @@ aliases = [
     ['Hans Maier', 'Hans', 'Meier'],
     ['Blanca Ramer', 'Blanca', 'Ramer-Stäubli'],
     ['Elisabeth Scheffeldt', 'Elisabeth', 'Scheffeldt Kern'],
+    ['Christina Zurfluh Fräfel', 'Christina', 'Zurfluh Fraefel'],
+    ['Hans-Egli', 'Hans', 'Egli'],
+    ['Jaqueline Hofer', 'Jacqueline', 'Hofer'],
+    ['Regula Sauter', 'Regine', 'Sauter'],
+    ['Heidi Bucher-Steinmann', 'Heidi', 'Bucher-Steinegger'],
+    ['Ursula Braunschweig', 'Ursula', 'Braunschweig-Lütolf'],
+    ['Pia Hollenstein Weidmann', 'Pia', 'Holenstein Weidmann']
 ]
 
 stopwords = ['Kanton', 'Jahr', 'Zürich', 'Postulat', 'Gemeinde', 'Antrag', 'Prozent', 'Gesetz', 'Vorlage', 'Kommission', 'Kantonsrat', 'Staat', 'Beispiel', 'Frage', 'Massnahmen', 'Schweiz', 'Dank']
