@@ -14,7 +14,7 @@ pip install -r ./requirements.txt
 ## What these scripts do:
 
 ### Speeches ("Voten")
-* Download all protocols
+* Download all minutes
 * Recognize and extract spoken words ("votes") per cantonal council member
 * Prepare list of members based on data from the state archives
 * Evaluate who said what and how often
@@ -29,7 +29,7 @@ pip install -r ./requirements.txt
 * Historical archive for members and functions. Data source also not above reproach. Manual corrections needed.
 
 ## Scripts
-* `0_scrape_geschaefte.ipynb`: Downloads all data (session information and protocols as PDF)
+* `0_scrape_geschaefte.ipynb`: Downloads all data (session information and minutes as PDF)
 * `0_scrape_sitzung.ipynb`: Downloads all submissions
 * `1_additional_data.ipynb`: Loads all cantonal councils of the past using data from the state archives
 * `2_extract.ipynb`: Searches PDFs and tries to extract spoken word
@@ -51,8 +51,8 @@ pip install -r ./requirements.txt
 |`name`|str|Name of politician. Already normalized|
 |`vorname`|str|First name of politician. Already normalized|
 |`text`|str|Speech|
-|`page`|int|Page Number in protocol|
-|`f`|string|Path to protocol|
+|`page`|int|Page Number in minutes|
+|`f`|string|Path to minutes|
 |`sitzung_name`|string|Name of debate (from XML-API)|
 |`sitzung_date`|date|Date of debate (from XML-API)|
 |`sitzung_start`|datetime|Start of debate (from XML-API). When there are more than one debates per day, a time is given|
@@ -97,9 +97,9 @@ JSON-Array with same as in *export/votum/votum_*.csv*. Used HanTa for tagging.
 
 
 ## Text export: How it works, what is reliable, what not
-The protocols are written by hand. Although they are all based on the same template, deviations may occur. A new speech is introduced in each case with the name of the speaker in italics. The export looks for italic text beginnings that make sense in context.  
+The minutes are written by hand. Although they are all based on the same template, deviations may occur. A new speech is introduced in each case with the name of the speaker in italics. The export looks for italic text beginnings that make sense in context.  
 
-The protocols usually start with the rules of procedure. There, the Council President speaks, but the formatting is often different than later in the proceedings. Since the focus was on the debate, these rules of procedure were usually not exported correctly. For furthertext analyses, it is therefore recommended to remove the votes of the acting Council President.
+The minutes usually start with the rules of procedure. There, the Council President speaks, but the formatting is often different than later in the proceedings. Since the focus was on the debate, these rules of procedure were usually not exported correctly. For furthertext analyses, it is therefore recommended to remove the votes of the acting Council President.
 
 ## How to load the data (examples)
 ### Load speeches ("Voten")
