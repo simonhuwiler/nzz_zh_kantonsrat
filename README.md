@@ -95,6 +95,37 @@ pip install -r ./requirements.txt
 All votes already tagged (is it a noun, verb, etc.)
 JSON-Array with same as in *export/votum/votum_*.csv*. Used HanTa for tagging.
 
+**export/mitglieder.json**  
+All members of the parliament. JSON-Array. How to load, see at the end of the readme.  
+```json
+  {
+    "id": 21221,
+    "name": "Scherrer Moser",
+    "vorname": "Benno",
+    "geschlecht": "m",
+    "jahrgang": 1965.0,
+    "einsitz": [
+      {
+        "start": "2007-05-21 00:00:00",
+        "end": "2100-12-31 00:00:00"
+      }
+    ],
+    "partei": [
+      {
+        "bezeichnung": "GLP",
+        "start": "2007-05-21 00:00:00",
+        "end": "2100-12-31 00:00:00"
+      }
+    ],
+    "funktion": [
+      {
+        "bezeichnung": "Präsidium",
+        "start": "2021-05-03 00:00:00",
+        "end": "2100-12-31 00:00:00"
+      }
+    ]
+  }
+```
 
 ## Text export: How it works, what is reliable, what not
 The minutes are written by hand. Although they are all based on the same template, deviations may occur. A new speech is introduced in each case with the name of the speaker in italics. The export looks for italic text beginnings that make sense in context.  
@@ -195,4 +226,4 @@ with open(Path('../export/nouns/nouns_w.txt'), 'rb') as fp:
     list_w = pickle.load(fp)
 ```
 ## Kontakt:
-simon.huwiler@nzz.ch
+www.journalist.sh
