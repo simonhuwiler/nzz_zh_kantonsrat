@@ -101,7 +101,7 @@ The protocols are written by hand. Although they are all based on the same templ
 
 The protocols usually start with the rules of procedure. There, the Council President speaks, but the formatting is often different than later in the proceedings. Since the focus was on the debate, these rules of procedure were usually not exported correctly. For furthertext analyses, it is therefore recommended to remove the votes of the acting Council President.
 
-## Examples for the data import
+## How to load the data (examples)
 ### Load speeches ("Voten")
 ```python
 import pandas as pd
