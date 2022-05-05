@@ -91,7 +91,7 @@ pip install -r ./requirements.txt
 |`geschlecht`|str|Gender|
 |`jahrgang`|int|Year born|
 
-**export/tags/tag_*.json**
+**export/tags/tag_*.json**  
 All votes already tagged (is it a noun, verb, etc.)
 JSON-Array with same as in *export/votum/votum_*.csv*. Used HanTa for tagging.
 
@@ -101,7 +101,98 @@ The protocols are written by hand. Although they are all based on the same templ
 
 The protocols usually start with the rules of procedure. There, the Council President speaks, but the formatting is often different than later in the proceedings. Since the focus was on the debate, these rules of procedure were usually not exported correctly. For furthertext analyses, it is therefore recommended to remove the votes of the acting Council President.
 
+## Examples for the data import
+### Load speeches ("Voten")
+```python
+import pandas as pd
+from pathlib import Path
 
+# Load files
+df_votum = pd.concat([
+    pd.read_csv(Path('../export/votum/votum_0.csv')),
+    pd.read_csv(Path('../export/votum/votum_1.csv'))
+])
 
+# Remove non members (mostly former members who are now in the Regierungsrat)
+df_votum = df_votum[df_votum.ismember == True]
+
+# Typecast
+df_votum['sitzung_date'] = pd.to_datetime(df_votum['sitzung_date'])
+
+# Remove empty texts
+df_votum = df_votum[df_votum.text.notna()]
+
+# Replace CVP with Die Mitte (you might need that)
+df_votum.loc[df_votum.partei.str.lower() == 'cvp', 'partei'] = "Die Mitte"
+
+# Remove Presidents
+df_votum = df_votum[df_votum.funktion.isna()]
+```
+
+### Load Information about members
+
+```python
+import pandas as pd
+import json
+import utils
+
+# Open member json
+with open(Path('../export/mitglieder.json'), encoding='utf-8') as f:
+    kantonsrat = json.load(f)
+
+# Typecast
+utils.kantonsrat_to_datetime(kantonsrat)
+
+# Get all members at a specific day
+df = utils.kantonsrat_as_dataframe(kantonsrat, datetime.datetime(2020, 7, 1))
+
+```
+
+### Load Submissions
+```python
+import pandas as pd
+from pathlib import Path
+
+# Load file
+df = pd.read_csv(Path('../export/geschaefte.csv'))
+
+# Only Members if needed
+df = df[df.erstunterzeichneristkantonsrat == True]
+
+# To Datetime
+df['start'] = pd.to_datetime(df['start'])
+df['letzterschrittstart'] = pd.to_datetime(df['letzterschrittstart'])
+
+```
+
+### Tagged speeches
+```python
+import glob
+import json
+from pathlib import Path
+
+records = []
+for f in glob.glob(str(Path('../export/tags/*.json'))):
+    records = records + json.load(open(f, 'r', encoding='utf-8'))
+
+print(len(records))
+
+# Members only, no Presidents
+r_members = list(filter(lambda x: x['ismember'] == True, records))
+r_members = list(filter(lambda x: x['funktion'] not in ['Präsidium', '2. Vizepräsidium', '1. Vizepräsidium'], r_members))
+print(len(r_members))
+```
+
+### Nouns
+```python
+from pathlib import Path
+import pickle
+
+with open(Path('../export/nouns/nouns_m.txt'), 'rb') as fp:
+    list_m = pickle.load(fp)
+
+with open(Path('../export/nouns/nouns_w.txt'), 'rb') as fp:
+    list_w = pickle.load(fp)
+```
 ## Kontakt:
 simon.huwiler@nzz.ch
