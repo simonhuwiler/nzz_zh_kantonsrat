@@ -17,13 +17,12 @@ def kantonsrat_to_datetime(kantonsrat):
 def filter_kantonsrat_by_date(kantonsrat, dt):
     return list(filter(lambda x: len(list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), x['einsitz']))) > 0, kantonsrat))
 
-def kantonsrat_as_dataframe(kantonsrat, dt):
-    members = filter_kantonsrat_by_date(kantonsrat, dt)
+def members_to_dataframe(members, filterlambda):
     records = []
     for r in members:
 
         # Get Party
-        f = list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), r['partei']))
+        f = list(filter(filterlambda, r['partei']))
         party = ''
         if len(f) > 0:
             party = f[0]['bezeichnung']
@@ -33,10 +32,18 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
             party = 'Die Mitte'
 
         # Get Funktion
-        f = list(filter(lambda e: (e['start'] <= dt) and (e['end'] >= dt), r['funktion']))
+        f = list(filter(filterlambda, r['funktion']))
         funktion = np.nan
         if len(f) > 0:
-            funktion = f[0]['bezeichnung']  
+            funktion = f[0]['bezeichnung']
+
+        # Get Einsitz
+        f = list(filter(filterlambda, r['einsitz']))
+        einsitzstart = np.nan
+        einsitzend = np.nan
+        if len(f) > 0:
+            einsitzstart = f[0]['start']
+            einsitzend = f[0]['end']
 
         funktion = np.nan if funktion == 'Mitglied' else funktion
 
@@ -46,10 +53,28 @@ def kantonsrat_as_dataframe(kantonsrat, dt):
             'jahrgang': r['jahrgang'],
             'geschlecht': r['geschlecht'],
             'party': party,
-            'funktion': funktion
+            'funktion': funktion,
+            'einsitzstart': einsitzstart,
+            'einsitzend': einsitzend
         })
 
     return pd.DataFrame(records)
+
+def kantonsrat_as_dataframe(kantonsrat, dt):
+    members = filter_kantonsrat_by_date(kantonsrat, dt)
+    return members_to_dataframe(members, lambda e: (e['start'] <= dt) and (e['end'] >= dt))
+
+def kantonsrat_as_dataframe_from_to(kantonsrat, tStart, tEnd):
+    def filter_from_to(e):
+        return (
+               ((e['end'] >= tStart) and (e['end'] <= tEnd))
+            or ((e['start'] >= tStart) and (e['start'] <= tEnd))
+            or ((e['start'] <= tStart) and (e['end'] >= tEnd))
+        )
+
+    members = list(filter(lambda x: len(list(filter(filter_from_to, x['einsitz']))) > 0, kantonsrat))
+    return members_to_dataframe(members, filter_from_to)
+    
 
 aliases = [
     ['Stefanie Huber', 'Stefanie Elisabeth', 'Huber'],
