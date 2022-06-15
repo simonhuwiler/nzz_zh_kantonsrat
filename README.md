@@ -34,8 +34,8 @@ pip install -r ./requirements.txt
 * `1_additional_data.ipynb`: Loads all cantonal councils of the past using data from the state archives
 * `2_extract.ipynb`: Searches PDFs and tries to extract spoken word
 * `3_clean.ipynb`: Cleans the extracted word logs and adds information about the person speaking
-* `4_analyse_base.ipynb`: QQuantitative analyses of **speeches** ("Voten")
-* `5_text_analysis.ipynb`: Text analysesof **speeches** ("Voten")
+* `4_analyse_base.ipynb`: Quantitative analyses of **speeches** ("Voten")
+* `5_text_analysis.ipynb`: Text analyses of **speeches** ("Voten")
 * `6_geschaefte_analyse.ipynb`: Analysis of the submitted proposals
 
 ## Cleaned data you might need:
