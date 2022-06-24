@@ -1,6 +1,10 @@
 # Kantonsrat Zürich: Analyse
 This is the repository for the NZZ cantonal council analysis. Here you can find all scrapers, cleaned word transcripts and analyses.
 
+## Published Stories:
+* [Politisieren Frauen anders als Männer? – Eine Datenanalyse zeigt, wer im Zürcher Parlament mehr spricht und wer welche Themen setzt](https://www.nzz.ch/zuerich/zuerich-politisieren-frauen-anders-als-maenner-eine-datenanalyse-ld.1687125)
+* [So klingt der Kantonsrat – der Geschlechterunterschied in Musik](https://www.nzz.ch/visuals/so-klingt-der-kantonsrat-der-geschlechterunterschied-in-musik-ld.1689011)
+
 ## Installation
 Clone Git
 ```
